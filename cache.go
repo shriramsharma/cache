@@ -1,10 +1,6 @@
 package cache
 
-import (
-	"log"
-
-	lru "github.com/shriramsharma/cache/lru"
-)
+import lru "github.com/shriramsharma/cache/lru"
 
 // Cache interface
 type Cache interface {
@@ -18,7 +14,7 @@ type Cache interface {
 func New(size int) (Cache, error) {
 	cache, err := lru.NewLRU(size)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 	return cache, nil
 }
