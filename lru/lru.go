@@ -2,7 +2,6 @@ package lru
 
 import (
 	"container/list"
-	"errors"
 	"fmt"
 	"sync"
 )
@@ -18,7 +17,7 @@ type LRUCache struct {
 // NewLRU Creates a new LRU Cache object
 func NewLRU(size int) (*LRUCache, error) {
 	if size <= 0 {
-		return nil, errors.New("Invalid cache size")
+		return nil, fmt.Errorf("Invalid cache size")
 	}
 	lru := &LRUCache{
 		pageList:    list.New(),
